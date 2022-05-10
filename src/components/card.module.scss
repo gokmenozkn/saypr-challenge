@@ -1,0 +1,58 @@
+$tablet-bp: 768px;
+$laptop-bp: 992px;
+
+.card {
+  width: calc((100 / 3) * 1% - 2rem);
+  background-color: white;
+  border-radius: 0.8rem;
+
+  @media screen and (max-width: $tablet-bp) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 769px) and (max-width: $laptop-bp) {
+    width: calc((100 / 2) * 1% - 2rem);
+  }
+
+  &__img {
+    width: 100%;
+    max-height: 20rem;
+    height: 100%;
+  }
+
+  &__body {
+    padding: 1.8rem 2.4rem;
+
+    &__title {
+      font-weight: 500;
+      font-size: 2rem;
+      margin-bottom: 0.7rem;
+    }
+  }
+
+  &__bottom {
+    background-color: #fafafa;
+    border-top: 1px solid #e8e8e8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.8rem 2.4rem;
+    font-size: 1.6rem;
+  }
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.info {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+}
+
+.icon {
+  cursor: pointer;
+}
