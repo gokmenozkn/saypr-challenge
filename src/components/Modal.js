@@ -2,7 +2,6 @@ import { useRef, useState } from 'react';
 import { useAppContext } from '../context/AppContext';
 
 export default function Modal() {
-  // function save(id, name, email, phone, website)
   const { setIsModalOpen, editingItem, save } = useAppContext();
   const [name, setName] = useState(editingItem.name || '');
   const [email, setEmail] = useState(editingItem.email || '');
@@ -19,6 +18,7 @@ export default function Modal() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!name && !email && !phone && !website) return;
     save(editingItem.id, name, email, phone, website);
   }
 
@@ -32,6 +32,7 @@ export default function Modal() {
               type='text'
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
             />
           </div>
           <div className='formGroup'>
@@ -40,6 +41,7 @@ export default function Modal() {
               type='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className='formGroup'>
@@ -48,6 +50,7 @@ export default function Modal() {
               type='text'
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
+              required
             />
           </div>
           <div className='formGroup'>
@@ -56,13 +59,10 @@ export default function Modal() {
               type='text'
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
+              required
             />
           </div>
-          <button
-            onClick={() => save(editingItem.id, name, email, phone, website)}
-            className='btn'
-            type='submit'
-          >
+          <button className='btn' type='submit'>
             Save
           </button>
         </div>
